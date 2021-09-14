@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            html,body{background-color: #394f8a; height: max-content;}
+            a{text-decoration: none; color: black;}
+            .container{margin:5% 30% 15% 25%; background-color: #4a5fc1;width: 50%; height: 50%; border-radius: 25%;user-select: none;-webkit-user-select: none;-ms-user-select: none;}
+            .numpad-container{margin: auto 18% auto auto; width: 50%;}
+            .pin_key{display: inline-flex;width: 5%; margin: 5%; text-align: center ;border: 2px solid #f8efea; border-radius: 30%; font-size: 2.5vw; padding: 3%;cursor: pointer;}
+            li{text-decoration: none; display: inline-flex;}
+            li{background-color: #9cf6fb;font-size: 2vw; font-family: cursive; margin: 1%;padding: 0.5%; }
+            nav{ background-color:#e1fcfd ;  width: 100%;}
+            .nav-container{ text-align: right;}
+            .numpad-text{ font-size: 3vw;text-align: center;display:inline-flex;margin: 5% 25% 5% 25%; width: 50%;height: 3vw; background-color: #e1fcfd; border-radius: 1.5vw; }
+            #xoproject{ width: 100%; height: max-content; background-color: #394f8a; padding:3% 0% 3% 0%;}
+            /*.text{ font-size: 2vw; margin: auto 20% auto 20%;text-align: center; border-radius: 15%; padding: 1%;}
+            .xo-image{ margin:3% 15% 3% 15%;width: 70%; height: 40%; border-radius: 10%;display: block; border: 2px solid black;}
+            .xo-container{background-color: #ead6cd; margin: 0% 10% 0% 10%; border-radius: 15%;}
+            */
+            .text{ font-size: 2vw; text-align: left; border-radius: 15%; padding: 1%; }
+            .xo-image{ width: 50%; height: 100%; border-radius: 10%;float:left;border: 2px solid black;margin-right: 1vw;}
+            .xo-container{background-color: #ead6cd; margin: 0% 10% 0% 10%; border-radius: 15% ;padding:5%;height: max-content;}
+            .playxo{ text-align: center; font-size: xx-large; margin: 5% 25% 5% 25%; height: 20% ;border-radius: 40%; width: 50%; padding: 3%;background-color: #589CCC; }
+            .tic{display: inline-flex; width:max-content;margin: 5%;text-align: center;font-size: 2.5vw;border: 2px solid #f8efea; border-radius: 30%;  padding: 1.5%;cursor: pointer;background-color: #9cf6fb}
+            footer{width:100%; background-color: #e5b9a8 ;position: absolute; }
+            .comment{width: 80%;margin: 10%;}
+            .comment h1{text-align: center; width: 100%; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color:#748b64; text-shadow: -10px 15px 5px black; font-size: 6vw;}
+            .textcomment{ width: 100%; height: 10vw; border: 1px solid black; font-family: monospace; font-size: 3vw; color:blue;}
+            .subcom{ width: 30%; margin: 5% 35% 5% 35%; height:max-content; background-color:#748b64;border-radius: 1.5vw; }
+            .clear{
+    
+                clear: both;
+            }
+            @media only screen and (max-width:600px ) {
+                
+                html,body{height: 600px;}
+                nav{height: 15%;}
+                .nav-container{ margin-left: 0%;}
+                .container{margin: 20% 15% auto 15%; width: 70%; height:60%;}
+                li{ padding: 2%; font-size: 3vw; margin-top: 10%;}
+                .numpad-text{ height: 10%; font-size: larger; margin-left: 22%; }
+                .numpad-container{margin: 6% 10% auto 10% ; width: 80%; text-align: center;}
+                .pin_key,.tic{width: 10%; height: 12%; text-align: center;font-size: medium;}
+                .tic{width: 10vw;}
+                #xoproject{margin-top: 15%; height:max-content;}
+                .text{ font-size: 6vw;margin: auto 5% auto 5%; padding: 5%; text-align: left;}
+                .xo-container{ margin: 5%; border-radius: 15%;}
+                .xo-image{ height: 60vw; margin:3% 5% 3% 5%; width: 90%;}
+                .playxo{ text-align: center; font-size: x-large; margin: 5% 25% 5% 25%; height: 20% ;border-radius: 40%; width: 50%; padding: 3%; }
+
+            }
+            
+           
+        </style>
+    </head>
+    <body> 
+        <nav>
+            <ol> <div class="nav-container"><Li><a href="https://www.instagram.com/ahmd_maaz/">About Me</a></Li> <li> <a href='#xoproject'> Projects</a></li> <li><a href="#comment">Leave A comment</a></li></div> </ol>
+        </nav>
+        <div class="container"> 
+        <form action="{{ url_for('homepage') }}" method="POST" >
+        <input type="hidden" name="form" value="form1">
+        <input type="password" readonly class="numpad-text" name="code"> 
+        <div class="numpad-container">
+            <div class="pin_key" onclick="pincode(1)">1</div>
+            <div class="pin_key" onclick="pincode(2)">2</div>
+            <div class="pin_key" onclick="pincode(3)">3</div><br>
+            <div class="pin_key" onclick="pincode(4)">4</div>
+            <div class="pin_key" onclick="pincode(5)">5</div>
+            <div class="pin_key" onclick="pincode(6)">6</div><br>
+            <div class="pin_key" onclick="pincode(7)">7</div>
+            <div class="pin_key" onclick="pincode(8)">8</div>
+            <div class="pin_key" onclick="pincode(9)">9</div><br>
+            <div class="pin_key" onclick="dlt()"> ␡ </div>
+            <div class="pin_key" onclick="pincode(0)">0</div>
+            <input type="submit" class="tic" value=" ✓ " onclick="check()"><br>
+        
+        </div>
+        </form>
+        </div>
+        <div id="xoproject">
+            <div class="xo-container"> 
+            <img class="xo-image" src="{{url_for('static', filename='xopic.png')}}"onclick="redirect('xo')">
+            <div class="text"> Lets take a look at this tic-tac-toe game. As we can see a pic of me smashing the AI as usual MUHAH. To clear things, tic tac toe is one of easiest projects to practice the algorithm.</div>
+            <div class="clear"></div>
+            </div>
+            
+            
+        </div>
+        <div id="xoproject">
+            <div class="xo-container">
+            <img class="xo-image" src="{{url_for('static', filename='rockpaperscissors.png')}}" onclick="redirect('xo')">
+            <div class="text"> Let me introduce u to the shittiest game ever Roshambo! ANW it was a bad idea to create this shit! enjoy playing it mate ;)</div>
+            <div class="clear"></div></div>
+        
+        <footer>
+        <form action="{{ url_for('homepage') }}" method="POST" class="comment">
+            <h1> Leave a comment mate</h1>
+            <input type="hidden" name="form" value="form2">
+            <textarea type="text" name="comment"  class="textcomment"></textarea>
+            <input type="submit" name="submit" value="submit" class="subcom">
+        </form>
+    </footer>
+    <script>
+        let equation='';
+        const password='2005';
+        function pincode(number){
+            if(equation.length < 4){
+            equation+= String(number)
+            document.querySelector('.numpad-text').value=equation;}}
+        function check(){
+            if(equation.length==4){
+            equation=''
+            
+            wronganimation()
+            setTimeout(function(){document.querySelector('.numpad-text').value=equation},600);
+            
+                
+            
+            }else{ wronganimation()}
+        }
+        function wronganimation(){
+            document.querySelector('.numpad-text').style.background='red'
+            setTimeout(function(){document.querySelector('.numpad-text').style.margin= '5% 25.7% 5% 24.3%'},0);
+            setTimeout(function(){document.querySelector('.numpad-text').style.margin= '5% 24.3% 5% 25.7%'},200);
+            setTimeout(function(){document.querySelector('.numpad-text').style.margin= '5% 25% 5% 25%'},400);
+            setTimeout(function(){document.querySelector('.numpad-text').style.background='cadetblue'},600);}
+        function dlt(){
+            equation= equation.slice(0,-1);
+            document.querySelector('.numpad-text').value=equation;
+            
+        }
+        function redirect(project){
+            if (project=='xo'){
+            location.href='/playxo'}
+            else if(project=='rps'){
+            location.href='/playrps'}}
+        
+        </script>
+    </body>
+</html>
