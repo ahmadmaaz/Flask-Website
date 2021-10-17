@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            
+        html,body{height: 100%;width: 100%; background-color: #B3DEE5;}
+        form{ margin: 10% 30% 10% 30%; width: 40%; height: max-content; background-color:#FFA101;}
+        input{display: block; width: 94%; height: 6vw; margin: 3%; text-align: center; font-size:x-large; background-color: #FAE6B1;}
+        h1{font-size: xx-large; text-align: center; color: blue; font-family: cursive;}
+        h2{text-align: center; color: black;background-color: red; border: 2px solid red; display: block;}
+        .button{ display: block; width: 50%; margin: 3% 25% 3% 25%; text-align: center; height: 20%; border-radius: 10%; background-color: #31525B;}
+        @media only screen and (max-width:800px ){
+            html,body{height: 600px;}
+            input{ height: 20vw;}
+            .button{height: 20vw;}
+            form{width: 80%; margin: 5% 10% 10% 10%; }
+            }
+            
+        </style>
+    </head>
+    <body>
+        <form action="{{ url_for('login') }}" method="POST">
+            <h1> Login into your account</h1>
+            {% for message in get_flashed_messages() %}
+            <h2>{{ message }}</h2>
+                {% endfor %}
+            <input type="text" name="username" placeholder='Please enter username' >
+            <input type="password" name="pass" placeholder="Please enter password" value="">
+            <input type="submit" name="button" value="Login " class="button">
+            <a href="/su" style="text-align: center;">Dont have an account?  click here to sign up </a>
+        </form>
+
+    </body>
+</html>

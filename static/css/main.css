@@ -1,0 +1,123 @@
+body{
+    font-family: 'Poppins',sans-serif;
+}
+section{
+    height: 500px;
+    background-color: bisque;
+    border: 1px solid black;
+}
+.sub-section{
+    display: flex;
+    justify-content: space-around;
+    padding: 80px;
+}
+
+.hero{
+    background-color: #1c1d25;
+    height: 100vh;
+    color:white;
+    font-size: 40px;
+}
+nav{
+    display: flex;
+    
+    justify-content: space-between;
+    
+}
+ul{
+    display: flex;
+    list-style-type: none;
+    width: 500px;
+    justify-content: space-around;
+    
+    font-size: 30px;
+}
+ol{
+    
+    font-size: 25px;
+    font-weight: 300;
+    
+}
+li{
+    width: 600px;
+    text-decoration: none;
+
+}
+h2{
+    background-color:cyan ;
+    width: 300px;
+    border-radius: 150px;
+    text-align: center;
+    padding: 5px;
+}
+h1{
+    font-size: 90px;
+    margin: 0px;
+
+}
+ p{
+    margin: 0px;
+    font-size: 30px;
+    font-weight: 300;
+}
+h2{
+    font-size: 50px;
+}
+.hero-area{
+    display: flex;
+    
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.hero-text{
+    margin-left: 80px;
+    margin-bottom: 200px;
+}
+.button{
+    width: 200px;
+    height: 45px;
+    border-radius: 25px;
+    background-color: coral;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 300;
+    padding-top: 5px;
+    margin-top: 20px;
+}
+.button:hover{
+    background-color: #ef744b;
+}
+button:active{
+    background-color: darkgrey;
+    color: #808080;
+}
+.social{
+    margin: 20px;
+
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.photo{
+    width: 300px;
+    border-radius: 150px;
+}
+.photo-container{
+    display: flex;
+    align-items: center;
+}
+#Contactus{
+    width:600px;
+    margin-left: 350px;
+    
+}
+.footer{
+    background-color: #1c1d25;
+    height: 200px;
+    text-align: center;
+    padding: 0px;
+    
+    
+}

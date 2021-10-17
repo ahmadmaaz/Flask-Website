@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+        <style>
+            .nav-link,.nav-link:hover{color: black; text-decoration: none; font-size: 1vw; margin: 2px;}
+            .nav-item{ background-color: lightskyblue; margin: 13px; }
+            body,html{user-select: none;-webkit-user-select: none;-ms-user-select: none; background-color: #fff4ab;}
+            ul{ background-color: #00034e;}
+            #first-container{ background-color: lightskyblue;margin: auto; text-align: center;}
+            #fullstack-pic{ border: 1px solid black; margin-top: 5%;}
+            pre{font-size: 1vw; color: #10064b;}
+            h1{font-size: 3.5vw; color: black;}
+            #prof-pic{margin-left: 30%;}
+            .card{ width: 400px; height:300px ;margin: auto; margin-bottom: 5%;}
+            i{ position: absolute;right: 3%; font-size: 5vw;}
+            @media only screen and (max-width:600px ){
+                .nav-link,.nav-link:hover{color: black; text-decoration: none; font-size: 3vw; margin: 0px;}
+                .nav-item{ background-color:lightskyblue; margin: 15px 5px 15px 0px;  }
+                h1{font-size: 5vw;}
+                pre{font-size: 4vw; margin:auto}
+                #prof-pic{margin-left: 0%;display:none }
+                .card{width: 90%;}
+                i{ font-size: 10vw;margin-top: 1.5%;}
+                .display-5{margin-top: 1.5%; font-size: 6vw;}
+            }
+        </style>
+        
+            
+        
+    </head>
+    <body>
+    <ul class="nav justify-content-end">
+    <li class="nav-item "> <a class="nav-link" href="#about-me">About Me</a></li>
+    <li class="nav-item"> <a class="nav-link"  href="#project-field">Projects</a></li>
+    <li class="nav-item"> <a class="nav-link" id="#"> Vault</a></li>
+    </ul> 
+    <div class="container-fluid" id='first-container'>
+        
+        <img src="{{url_for('static', filename='fullstack.jpg')}}" class="img-fluid" id="fullstack-pic"> 
+        <h1 style="margin-top: 5%;"> Welcome To Aԋɱαԃ-Aʅ-Mααȥ's portfolio! </h1> 
+        <pre> This website is built with bootstrap
+Just to practice bootstrap- 4 
+        </pre>
+    
+    </div>
+    <hr>
+    <div class="container-fluid" >
+        <div style="display: inline-flex;"> 
+        <h1 class="display-5"> About Me</h1>
+        <i  class="fas fa-chevron-circle-down"  id='about-me'  > </i></div>
+        <hr>
+        <div class="container" id='about-me-info' >
+            <img class="img-fluid float-left rounded" src="{{url_for('static', filename='prof-pic.jpg')}}"  id="prof-pic" >
+            <pre style="float:left">
+  ///////////////////////
+  /////////////////////// 
+  My name is Ahmad-Al-Maaz
+  I am 16 years old 
+  I live in Beirut,Lebanon
+  ///////////////////////
+  ///////////////////////
+
+            </pre>
+
+        </div>
+        
+
+    </div>
+    <div style="clear: both;"></div>
+    <div class="container-fluid" >
+        <div style="display: inline-flex;"> 
+        <h1 class="display-5" > Projects </h1>
+        <i  class="fas fa-chevron-circle-down"  id='project-toggle'  > </i></div>
+        <hr>
+    <div class="container-fluid" id="project-field">
+    <div class="row">
+    <div class="col-lg-4" > 
+        <div class="card" >
+             <img src="{{url_for('static', filename='xopic.png')}}"  class="card-img-top" onclick="redirect('xo')">
+              <div class="card-body">
+                   <div class="card-title"> <h4>Tic Tac Toe game</h4></div>
+                   <div class="card-text"> One of the simplest program to do with javascript. </div>
+                </div>
+            </div>
+        </div>
+    <div class="col-lg-4">
+        <div class="card" >
+            <img src="{{url_for('static', filename='rockpaperscissors.png')}}"  class="card-img-top" onclick="redirect('rps')">
+             <div class="card-body">
+                  <div class="card-title"> <h4>Roshambo</h4></div>
+                  <div class="card-text"> To be honest Roshambo was a great idea to practice the algorithms</div>
+               </div>
+           </div>
+       </div>
+    <div class="col-lg-4">
+        <div class="card" >
+            <img src="{{url_for('static', filename='unknown.png')}}"  class="card-img-top" >
+             <div class="card-body">
+                  <div class="card-title"> <h4>Coming Soon</h4></div>
+                  <div class="card-text"> ??????????????????????</div>
+               </div>
+           </div> </div>
+    </div></div></div>
+    <div class="container-fluid" id="contact-us">
+        <div style="display: inline-flex;"> 
+        <h1 class="display-5" > Contact Us </h1>
+        <i  class="fas fa-chevron-circle-down"  id='project-toggle' > </i></div>
+        <hr>
+        </div> 
+    <script>
+        $('.nav-link').click(function(){
+            if ($(this).text()=='About Me'){
+                $('#about-me-info').slideDown()}
+            else if($(this).text()=='Projects'){
+                $('#project-field').slideDown()
+            }
+            
+        })
+        $('#about-me').click(function(){
+            $('#about-me-info').slideToggle()})
+        $('#project-toggle').click(function(){
+            $('#project-field').slideToggle()})
+        $("#about-me-info").hide()
+        $('#project-field').hide()
+        function redirect(project){
+            if (project=='xo'){
+            location.href='/playxo'}
+            else if(project=='rps'){
+            location.href='/playrps'}}
+        here= prompt('Heyy answer me ')
+        const xhr = new XMLHttpRequest()
+        const data = new FormData()
+
+        data.append('input', target.value)
+        xhr.addEventListener('load', handleResponse)
+        xhr.open('POST', API_URL)
+        xhr.send(data)
+    </script>
+    </body>
+</html>
