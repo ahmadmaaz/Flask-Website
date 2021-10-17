@@ -1,4 +1,5 @@
 
+
 from time import strftime
 from os import name
 from flask import Flask,render_template, request,redirect,url_for,session
@@ -14,14 +15,14 @@ app.secret_key = '2141#frq'
 @app.route('/su',methods = ['POST', 'GET'])
 def signup():
    if request.method=='POST':
-      
+
       username=request.form['username']
       password=request.form['pass']
       email=request.form['email']
 
       conn = sqlite3.connect('database.db')
       conn.row_factory = sqlite3.Row
-   
+
       cur = conn.cursor()
       #cur.execute('DROP TABLE IF EXISTS login')
       cur.execute("select * from login2")
@@ -42,38 +43,38 @@ def signup():
             conn.commit()
             return redirect('/')
 
-            
 
 
-            
+
+
 
       else:
          flash('please fill all fields')
       #conn.execute('UPDATE students SET name ="yara" WHERE name="ahmadalmaaz"')
       ##conn.execute('DELETE FROM students WHERE city = "12"')
-      
+
       conn.commit()
       conn.close()
-      
-       
-      
+
+
+
       return render_template('signuppage.html')
    else:
-      
+
       return render_template('signuppage.html')
 @app.route('/verification',methods = ['POST', 'GET'])
-def verification(): 
+def verification():
    #if 'email' in session and 'password' in session:
    if False:
       global i
       email=session['email']
       password=session['password']
       username=session['username']
-      
+
       if i==0:
          with smtplib.SMTP("smtp.outlook.com",587) as smtp:
             global key
-            key= str(random.randint(1,9))+str(random.randint(1,9)) +str(random.randint(1,9)) + str(random.randint(1,9)) 
+            key= str(random.randint(1,9))+str(random.randint(1,9)) +str(random.randint(1,9)) + str(random.randint(1,9))
             smtp.ehlo()
             smtp.starttls()
             smtp.ehlo()
@@ -82,7 +83,7 @@ def verification():
 
             subject = 'Email verification'
             msg= f'Subject: {subject} \n\n {key}'
-            
+
             smtp.sendmail("ahmd_maaz05@outlook.com",email,msg)
             i+=1
       if request.method=="POST":
@@ -99,12 +100,12 @@ def verification():
       return render_template('verification.html',email=email)
    else:
       return redirect('/su')
-   
+
 
 @app.route('/',methods = ['POST', 'GET'])
 def login():
    if request.method=='POST':
-      username=request.form['username']
+      username=request.form['username'].lower()
       password=request.form['pass']
       session['username']=username
       conn = sqlite3.connect('database.db')
@@ -114,13 +115,13 @@ def login():
       rows= cur.fetchall();
       namepass=[]
       for row in rows:
-        namepass.append(row['username']+row['password'])
+        namepass.append(row['username'].lower()+row['password'])
       if username and password:
          if username+password in namepass:
             session['enter']=True
             session.pop('_flashes', None)
             return redirect('/home')
-            
+
          else:
             session.pop('_flashes', None)
             flash('Username or password is incorrect')
@@ -130,23 +131,23 @@ def login():
 
       return render_template('login.html')
    return render_template('login.html')
-   
-   
+
+
 @app.route('/list')
 def list_html():
    #if 'databaseaccess' in session:
    if True:
       con = sqlite3.connect("database.db")
       con.row_factory = sqlite3.Row
-      
+
       cur = con.cursor()
       cur.execute("select * from login2")
-      
+
       rows = cur.fetchall();
       cur.execute('select * from comment')
       rows2=cur.fetchall();
       return render_template("list.html",rows = rows,rows2=rows2)
-   else: 
+   else:
       return redirect('/')
 @app.route('/home',methods = ['POST', 'GET'])
 def homepage():
@@ -170,7 +171,7 @@ def homepage():
       time.sleep(1.5)
       return render_template('home.html')
    else:
-      
+
       return redirect('/')
 @app.route('/playxo')
 def playxo():
@@ -186,5 +187,8 @@ def playrps():
       return redirect('/')
 if __name__ == '__main__':
    app.run()
+
+
+
 
 
